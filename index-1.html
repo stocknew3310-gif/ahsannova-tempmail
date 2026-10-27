@@ -1,0 +1,2758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5"/>
+<meta name="theme-color" content="#05060a"/>
+<title>AHSAN × NOVA — Ultimate TempMail Pro</title>
+<link rel="icon" href="https://i.ibb.co/fzjjCtrn/545430.jpg"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet"/>
+
+<style>
+/* ═══════════════════════════════════════════════════════════════
+   AHSAN × NOVA - ULTIMATE DESIGN SYSTEM
+   VERSION: 6.0.0 (FIXED + EXTENDED)
+   ═══════════════════════════════════════════════════════════════ */
+
+/* --- 1. ROOT VARIABLES --- */
+:root {
+  --bg-main: #030408;
+  --bg-secondary: #080b14;
+  --bg-tertiary: #0d1120;
+  --bg-glass: rgba(18, 22, 34, 0.72);
+  --bg-glass-heavy: rgba(10, 13, 22, 0.85);
+  --bg-solid: #0f1320;
+  --bg-input: rgba(0, 0, 0, 0.45);
+  
+  --border-light: rgba(120, 140, 180, 0.14);
+  --border-medium: rgba(120, 140, 180, 0.24);
+  --border-heavy: rgba(120, 140, 180, 0.35);
+  --border-accent: rgba(0, 255, 209, 0.4);
+  
+  --text-primary: #e6ecf5;
+  --text-secondary: #c2cbdb;
+  --text-muted: #7d8aa3;
+  --text-dark: #525d73;
+  
+  --color-accent: #00ffd1;
+  --color-accent-2: #7c5cff;
+  --color-accent-3: #ff3d81;
+  --color-danger: #ff4d6d;
+  --color-warn: #ffb020;
+  --color-success: #22e08a;
+  
+  --radius-xl: 32px;
+  --radius-lg: 24px;
+  --radius-md: 16px;
+  --radius-sm: 12px;
+  --radius-xs: 8px;
+  
+  --shadow-soft: 0 15px 40px -12px rgba(0,0,0,0.8);
+  --shadow-heavy: 0 30px 80px -20px rgba(0,0,0,0.95);
+  --shadow-glow: 0 0 50px -10px rgba(0,255,209,0.6);
+  
+  --transition-fast: cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* --- 2. GLOBAL RESETS --- */
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- 3. BACKGROUND EFFECTS --- */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(1200px 800px at 5% -10%, rgba(124,92,255,.25), transparent 60%),
+    radial-gradient(1000px 600px at 105% 5%, rgba(0,255,209,.18), transparent 55%),
+    radial-gradient(1000px 800px at 50% 120%, rgba(255,61,129,.15), transparent 60%),
+    radial-gradient(800px 600px at 25% 55%, rgba(124,92,255,.1), transparent 60%),
+    var(--bg-main);
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(120,140,180,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(120,140,180,.04) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse at center, #000 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 30%, transparent 80%);
+}
+
+#particles-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.65;
+}
+
+/* --- 4. TYPOGRAPHY & LINKS --- */
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+a:hover {
+  opacity: 0.8;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+  font-size: inherit;
+  outline: none;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+input, textarea, select {
+  font-family: inherit;
+  color: inherit;
+  border: none;
+  outline: none;
+}
+
+::selection {
+  background: rgba(0,255,209,.3);
+  color: #fff;
+}
+
+/* --- 5. SCROLLBAR --- */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(120,140,180,.22);
+  border-radius: 10px;
+  border: 2px solid var(--bg-main);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0,255,209,.5);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   LOGO STYLING
+   ═══════════════════════════════════════════════════════════════ */
+.logo-container {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.logo-img {
+  width: 58px;
+  height: 58px;
+  object-fit: contain;
+  border-radius: 12px;
+  transition: transform 0.4s var(--transition-fast), filter 0.4s var(--transition-fast);
+  filter: drop-shadow(0 0 15px rgba(0,255,209,.5));
+}
+
+.logo-container:hover .logo-img {
+  filter: drop-shadow(0 0 25px rgba(0,255,209,.9));
+  transform: scale(1.05) rotate(2deg);
+}
+
+.logo-container.small .logo-img {
+  width: 44px;
+  height: 44px;
+}
+
+.logo-text {
+  font-weight: 700;
+  font-size: 24px;
+  letter-spacing: -0.5px;
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.logo-text .brand-axn {
+  background: linear-gradient(135deg, var(--color-accent), var(--color-accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 800;
+}
+
+.logo-text .brand-x {
+  color: var(--text-muted);
+  font-weight: 400;
+  margin: 0 4px;
+  opacity: 0.8;
+}
+
+.logo-text .brand-nova {
+  color: var(--text-primary);
+  font-weight: 300;
+  letter-spacing: 1.5px;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   AUTH SCREEN
+   ═══════════════════════════════════════════════════════════════ */
+#authScreen {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 480px;
+  position: relative;
+  background: linear-gradient(180deg, rgba(22,26,40,.92), rgba(11,14,24,.96));
+  border: 1px solid rgba(0,255,209,.2);
+  border-radius: var(--radius-xl);
+  padding: 46px 38px 38px;
+  box-shadow: 
+    0 40px 80px -15px rgba(0,0,0,.95), 
+    0 0 50px -10px rgba(0,255,209,.2), 
+    inset 0 1px 0 rgba(255,255,255,.15);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  overflow: hidden;
+  animation: cardIn 0.7s var(--transition-fast);
+}
+
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(30px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.auth-card::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 10%;
+  right: 10%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-accent), var(--color-accent-2), transparent);
+}
+
+.auth-card::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(0,255,209,.15), transparent 65%);
+  pointer-events: none;
+  border-radius: 50%;
+}
+
+.auth-header {
+  position: relative;
+  text-align: center;
+  margin-bottom: 32px;
+  z-index: 1;
+}
+
+.auth-header .logo-container {
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.auth-tagline {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 3px;
+  margin-top: 8px;
+  text-transform: uppercase;
+}
+
+.auth-tabs {
+  display: flex;
+  gap: 6px;
+  background: rgba(0,0,0,.4);
+  padding: 7px;
+  border-radius: var(--radius-md);
+  margin-bottom: 28px;
+  position: relative;
+  z-index: 1;
+  border: 1px solid var(--border-light);
+}
+
+.auth-tab-btn {
+  flex: 1;
+  padding: 13px;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--text-muted);
+  transition: all 0.3s var(--transition-fast);
+}
+
+.auth-tab-btn:hover {
+  color: var(--text-primary);
+}
+
+.auth-tab-btn.active {
+  background: linear-gradient(135deg, var(--color-accent), var(--color-accent-2));
+  color: #001;
+  box-shadow: 0 6px 20px -6px rgba(0,255,209,.5);
+}
+
+/* --- FORM FIELDS --- */
+.form-group {
+  margin-bottom: 18px;
+  position: relative;
+  z-index: 1;
+}
+
+.form-label {
+  display: block;
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-bottom: 9px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.input-wrapper {
+  position: relative;
+}
+
+.input-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-dark);
+  font-size: 15px;
+  pointer-events: none;
+  transition: color 0.3s;
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  z-index: 2;
+}
+
+.form-input {
+  width: 100%;
+  padding: 16px 16px 16px 48px;
+  border-radius: var(--radius-md);
+  background: var(--bg-input);
+  border: 1px solid var(--border-medium);
+  color: var(--text-primary);
+  font-size: 15px;
+  transition: all 0.3s var(--transition-fast);
+}
+
+.form-input:focus {
+  border-color: var(--border-accent);
+  background: rgba(0,255,209,.06);
+  box-shadow: 0 0 0 4px rgba(0,255,209,.15);
+}
+
+.form-input:focus + .input-icon {
+  color: var(--color-accent);
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 16px 18px;
+  border-radius: var(--radius-md);
+  font-weight: 800;
+  font-size: 15px;
+  background: linear-gradient(135deg, var(--color-accent), var(--color-accent-2));
+  color: #001;
+  transition: all 0.3s var(--transition-fast);
+  letter-spacing: 0.5px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+  margin-top: 8px;
+}
+
+.btn-submit::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent, rgba(255,255,255,.4), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s;
+}
+
+.btn-submit:hover::before {
+  transform: translateX(100%);
+}
+
+.btn-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow);
+}
+
+.btn-submit:active {
+  transform: translateY(0);
+}
+
+.auth-link-row {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 13px;
+  color: var(--text-muted);
+  position: relative;
+  z-index: 1;
+}
+
+.auth-link-row a {
+  font-weight: 700;
+  cursor: pointer;
+  color: var(--color-accent);
+}
+
+.auth-message {
+  padding: 13px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  margin-bottom: 16px;
+  display: none;
+  position: relative;
+  z-index: 1;
+  font-weight: 500;
+}
+
+.auth-message.error {
+  display: block;
+  background: rgba(255,77,109,.15);
+  border: 1px solid rgba(255,77,109,.4);
+  color: #ff8ea3;
+}
+
+.auth-message.success {
+  display: block;
+  background: rgba(34,224,138,.15);
+  border: 1px solid rgba(34,224,138,.4);
+  color: #7bffbe;
+}
+
+.auth-footer {
+  text-align: center;
+  margin-top: 32px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(255,255,255,.08);
+  font-size: 10px;
+  color: var(--text-dark);
+  letter-spacing: 2px;
+  font-family: 'JetBrains Mono', monospace;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 1;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   APP SHELL
+   ═══════════════════════════════════════════════════════════════ */
+#appShell {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+  display: none;
+  flex-direction: column;
+}
+
+#appShell.active {
+  display: flex;
+}
+
+/* --- TOP NAVIGATION BAR --- */
+.top-nav {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 24px;
+  gap: 12px;
+  background: rgba(8,11,20,.85);
+  backdrop-filter: blur(25px) saturate(1.6);
+  -webkit-backdrop-filter: blur(25px) saturate(1.6);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 14px 6px 6px;
+  border-radius: 30px;
+  background: rgba(255,255,255,.05);
+  border: 1px solid var(--border-medium);
+  font-size: 13px;
+  color: var(--text-secondary);
+  transition: all 0.3s;
+  cursor: pointer;
+  max-width: 200px;
+}
+
+.user-badge:hover {
+  background: rgba(255,255,255,.1);
+  border-color: var(--border-accent);
+}
+
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-accent), var(--color-accent-2));
+  color: #001;
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+  font-size: 13px;
+  flex-shrink: 0;
+}
+
+.user-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+.icon-button {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-sm);
+  background: rgba(255,255,255,.05);
+  border: 1px solid var(--border-medium);
+  display: grid;
+  place-items: center;
+  color: var(--text-secondary);
+  transition: all 0.3s var(--transition-fast);
+  flex-shrink: 0;
+  position: relative;
+}
+
+.icon-button:hover {
+  background: rgba(0,255,209,.15);
+  border-color: var(--border-accent);
+  color: var(--color-accent);
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px -5px rgba(0,255,209,.3);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   MAIN LAYOUT (SIDEBAR + CONTENT)
+   ═══════════════════════════════════════════════════════════════ */
+.app-layout {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  flex: 1;
+  min-height: 0;
+  position: relative;
+}
+
+/* --- SIDEBAR --- */
+.sidebar-panel {
+  border-right: 1px solid var(--border-light);
+  background: rgba(10,13,22,.7);
+  backdrop-filter: blur(20px);
+  padding: 22px 16px;
+  overflow-y: auto;
+  max-height: calc(100vh - 71px);
+  scrollbar-width: thin;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-heading {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--text-dark);
+  padding: 18px 12px 10px;
+  font-weight: 800;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.sidebar-heading:first-child {
+  padding-top: 0;
+}
+
+.sidebar-action {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  transition: all 0.25s var(--transition-fast);
+  text-align: left;
+  margin-bottom: 2px;
+}
+
+.sidebar-action i {
+  width: 20px;
+  color: var(--text-muted);
+  font-size: 14px;
+  flex-shrink: 0;
+  transition: color 0.25s;
+}
+
+.sidebar-action:hover {
+  background: rgba(255,255,255,.06);
+  color: var(--text-primary);
+}
+
+.sidebar-action:hover i {
+  color: var(--text-secondary);
+}
+
+.sidebar-action.active {
+  background: linear-gradient(90deg, rgba(0,255,209,.16), rgba(124,92,255,.08));
+  color: var(--color-accent);
+  box-shadow: inset 0 0 0 1px rgba(0,255,209,.2);
+}
+
+.sidebar-action.active i {
+  color: var(--color-accent);
+}
+
+.sidebar-badge {
+  margin-left: auto;
+  font-size: 10px;
+  background: rgba(0,255,209,.2);
+  color: var(--color-accent);
+  padding: 2px 9px;
+  border-radius: 20px;
+  font-weight: 800;
+  min-width: 22px;
+  text-align: center;
+}
+
+.address-list {
+  margin-top: 6px;
+}
+
+.address-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 13px;
+  border-radius: 11px;
+  font-size: 12px;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--text-muted);
+  transition: all 0.25s var(--transition-fast);
+  cursor: pointer;
+  word-break: break-all;
+  margin-bottom: 2px;
+  position: relative;
+}
+
+.address-row:hover {
+  background: rgba(255,255,255,.05);
+  color: var(--text-secondary);
+}
+
+.address-row.active {
+  background: rgba(0,255,209,.1);
+  color: var(--color-accent);
+  box-shadow: inset 4px 0 0 var(--color-accent);
+}
+
+.address-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-success);
+  flex-shrink: 0;
+  box-shadow: 0 0 8px var(--color-success);
+}
+
+.address-email {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.address-delete {
+  opacity: 0;
+  font-size: 12px;
+  padding: 4px;
+  transition: all 0.25s;
+}
+
+.address-row:hover .address-delete {
+  opacity: 0.6;
+}
+
+.address-delete:hover {
+  opacity: 1;
+  color: var(--color-danger);
+}
+
+/* --- MAIN CONTENT --- */
+.content-area {
+  padding: 24px 28px 40px;
+  overflow-y: auto;
+  max-height: calc(100vh - 71px);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ADDRESS PANEL
+   ═══════════════════════════════════════════════════════════════ */
+.address-panel {
+  background: linear-gradient(180deg, rgba(22,26,40,.85), rgba(11,14,24,.92));
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-lg);
+  padding: 26px;
+  margin-bottom: 24px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+}
+
+.address-panel::after {
+  content: "";
+  position: absolute;
+  top: -60%;
+  right: -8%;
+  width: 380px;
+  height: 380px;
+  background: radial-gradient(circle, rgba(0,255,209,.15), transparent 65%);
+  pointer-events: none;
+  border-radius: 50%;
+  animation: pulseGlow 7s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.9; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(1.2); }
+}
+
+.address-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  position: relative;
+  z-index: 1;
+}
+
+.address-label i {
+  color: var(--color-accent);
+  font-size: 14px;
+}
+
+.address-controls {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+
+.email-input-box {
+  flex: 1;
+  min-width: 260px;
+  padding: 16px 22px;
+  border-radius: var(--radius-md);
+  background: var(--bg-input);
+  border: 1px solid var(--border-medium);
+  color: var(--color-accent);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  transition: all 0.3s var(--transition-fast);
+}
+
+.email-input-box:focus {
+  border-color: var(--border-accent);
+  box-shadow: 0 0 0 4px rgba(0,255,209,.15);
+  background: rgba(0,0,0,.7);
+}
+
+.action-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.btn-pill {
+  padding: 14px 22px;
+  border-radius: var(--radius-md);
+  font-size: 13.5px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s var(--transition-fast);
+  background: linear-gradient(135deg, var(--color-accent), var(--color-accent-2));
+  color: #001;
+  white-space: nowrap;
+}
+
+.btn-pill:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow);
+}
+
+.btn-pill:active {
+  transform: translateY(0);
+}
+
+.btn-pill.outline {
+  background: rgba(255,255,255,.06);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-medium);
+}
+
+.btn-pill.outline:hover {
+  background: rgba(255,255,255,.12);
+  box-shadow: none;
+  color: var(--text-primary);
+  border-color: var(--border-accent);
+}
+
+.btn-pill.outline i {
+  color: var(--color-accent);
+}
+
+.custom-email-box {
+  display: none;
+  gap: 12px;
+  margin-top: 18px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+  padding-top: 18px;
+  border-top: 1px dashed var(--border-medium);
+}
+
+.custom-email-box.show {
+  display: flex;
+  animation: slideDown 0.35s var(--transition-fast);
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.custom-email-box input {
+  flex: 1;
+  min-width: 220px;
+  padding: 14px 18px;
+  border-radius: 13px;
+  background: var(--bg-input);
+  border: 1px solid var(--border-medium);
+  color: var(--text-primary);
+  font-size: 14px;
+  font-family: 'JetBrains Mono', monospace;
+  transition: all 0.3s;
+}
+
+.custom-email-box input:focus {
+  border-color: var(--border-accent);
+  box-shadow: 0 0 0 4px rgba(0,255,209,.1);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   TOOLBAR & INBOX
+   ═══════════════════════════════════════════════════════════════ */
+.inbox-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.search-container {
+  flex: 1;
+  min-width: 220px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 18px;
+  border-radius: var(--radius-md);
+  background: rgba(255,255,255,.04);
+  border: 1px solid var(--border-medium);
+  transition: all 0.3s var(--transition-fast);
+}
+
+.search-container:focus-within {
+  border-color: var(--border-accent);
+  background: rgba(0,255,209,.06);
+  box-shadow: 0 0 0 4px rgba(0,255,209,.08);
+}
+
+.search-container input {
+  flex: 1;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-size: 14px;
+  min-width: 0;
+}
+
+.search-container i {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.filter-btn {
+  padding: 11px 20px;
+  border-radius: 24px;
+  font-size: 12.5px;
+  font-weight: 700;
+  background: rgba(255,255,255,.04);
+  border: 1px solid var(--border-medium);
+  color: var(--text-muted);
+  transition: all 0.3s var(--transition-fast);
+  white-space: nowrap;
+}
+
+.filter-btn:hover {
+  color: var(--text-secondary);
+  border-color: var(--border-accent);
+}
+
+.filter-btn.active {
+  background: rgba(0,255,209,.15);
+  border-color: var(--border-accent);
+  color: var(--color-accent);
+  box-shadow: 0 0 15px -5px rgba(0,255,209,.3);
+}
+
+/* --- EMAIL LIST --- */
+.email-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.email-card {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 16px;
+  align-items: center;
+  padding: 18px 22px;
+  border-radius: var(--radius-md);
+  background: rgba(255,255,255,.03);
+  border: 1px solid var(--border-light);
+  transition: all 0.3s var(--transition-fast);
+  cursor: pointer;
+  position: relative;
+  animation: fadeInCard 0.5s var(--transition-fast);
+}
+
+@keyframes fadeInCard {
+  from { opacity: 0; transform: translateX(-15px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.email-card:hover {
+  background: rgba(255,255,255,.06);
+  border-color: rgba(0,255,209,.3);
+  transform: translateX(4px);
+  box-shadow: 0 0 20px -8px rgba(0,255,209,.2);
+}
+
+.email-card.unread {
+  border-left: 4px solid var(--color-accent);
+  background: rgba(0,255,209,.04);
+}
+
+.email-card.unread .email-subject {
+  color: #fff;
+  font-weight: 700;
+}
+
+.email-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, var(--color-accent-2), var(--color-accent-3));
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  color: #fff;
+  font-size: 17px;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px -4px rgba(0,0,0,.5);
+}
+
+.email-meta {
+  min-width: 0;
+}
+
+.email-sender {
+  font-size: 12px;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+.email-sender .star-icon {
+  color: var(--color-warn);
+  font-size: 12px;
+  flex-shrink: 0;
+}
+
+.email-sender .unread-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 0 8px var(--color-accent);
+  flex-shrink: 0;
+}
+
+.email-subject {
+  font-size: 15px;
+  color: var(--text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-bottom: 3px;
+  font-weight: 500;
+}
+
+.email-preview {
+  font-size: 13px;
+  color: var(--text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.email-actions-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.email-time {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+}
+
+.email-quick-actions {
+  display: flex;
+  gap: 4px;
+  opacity: 0.4;
+  transition: opacity 0.3s;
+}
+
+.email-card:hover .email-quick-actions {
+  opacity: 1;
+}
+
+.email-quick-actions button {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  color: var(--text-muted);
+  font-size: 12px;
+  transition: all 0.25s var(--transition-fast);
+}
+
+.email-quick-actions button:hover {
+  background: rgba(0,255,209,.15);
+  color: var(--color-accent);
+}
+
+.email-quick-actions button.delete-btn:hover {
+  background: rgba(255,77,109,.2);
+  color: var(--color-danger);
+}
+
+/* --- EMPTY STATE --- */
+.empty-inbox {
+  text-align: center;
+  padding: 80px 20px;
+  color: var(--text-muted);
+}
+
+.empty-inbox i {
+  font-size: 60px;
+  opacity: 0.15;
+  margin-bottom: 22px;
+  display: block;
+}
+
+.empty-inbox h3 {
+  font-size: 18px;
+  color: var(--text-secondary);
+  margin: 0 0 10px;
+  font-weight: 700;
+}
+
+.empty-inbox p {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   MESSAGE VIEW PANEL
+   ═══════════════════════════════════════════════════════════════ */
+.message-view-panel {
+  background: linear-gradient(180deg, rgba(22,26,40,.85), rgba(11,14,24,.92));
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-lg);
+  padding: 26px;
+  margin-bottom: 24px;
+  animation: slideDown 0.4s var(--transition-fast);
+  box-shadow: var(--shadow-soft);
+}
+
+.message-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btn-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 18px;
+  border-radius: var(--radius-sm);
+  background: rgba(255,255,255,.05);
+  border: 1px solid var(--border-medium);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  transition: all 0.3s var(--transition-fast);
+}
+
+.btn-back:hover {
+  background: rgba(0,255,209,.15);
+  color: var(--color-accent);
+  border-color: var(--border-accent);
+  transform: translateX(-2px);
+}
+
+.message-info-box {
+  padding: 20px 22px;
+  border-radius: var(--radius-md);
+  background: rgba(0,0,0,.35);
+  border: 1px solid var(--border-medium);
+  margin-bottom: 20px;
+}
+
+.message-subject-text {
+  font-size: 20px;
+  word-break: break-word;
+  line-height: 1.4;
+  font-weight: 700;
+  margin-bottom: 14px;
+  color: var(--text-primary);
+}
+
+.message-detail-row {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+  display: flex;
+  gap: 8px;
+}
+
+.message-detail-row strong {
+  color: var(--text-secondary);
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.message-content-body {
+  padding: 24px;
+  border-radius: var(--radius-md);
+  background: rgba(255,255,255,.03);
+  border: 1px solid var(--border-medium);
+  font-size: 15px;
+  line-height: 1.8;
+  max-height: 600px;
+  overflow-y: auto;
+  word-break: break-word;
+}
+
+.message-content-body a {
+  color: var(--color-accent);
+  text-decoration: underline;
+}
+
+.message-content-body img {
+  max-width: 100%;
+  border-radius: 10px;
+  margin: 10px 0;
+}
+
+.message-content-body pre {
+  background: rgba(0,0,0,.5);
+  padding: 16px;
+  border-radius: 10px;
+  overflow-x: auto;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   COMMAND PALETTE
+   ═══════════════════════════════════════════════════════════════ */
+.command-palette-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(3,4,8,.85);
+  backdrop-filter: blur(12px);
+  display: none;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 15vh 20px 20px;
+}
+
+.command-palette-overlay.show {
+  display: flex;
+  animation: fadeInOverlay 0.25s;
+}
+
+@keyframes fadeInOverlay {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.command-palette-box {
+  width: 100%;
+  max-width: 600px;
+  background: var(--bg-solid);
+  border: 1px solid var(--border-accent);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 30px 80px -20px rgba(0,0,0,.95), 0 0 40px -10px rgba(0,255,209,.2);
+  animation: slideDown 0.3s var(--transition-fast);
+}
+
+.command-input {
+  width: 100%;
+  padding: 20px 24px;
+  background: none;
+  border-bottom: 1px solid var(--border-medium);
+  color: var(--text-primary);
+  font-size: 16px;
+}
+
+.command-input::placeholder {
+  color: var(--text-dark);
+}
+
+.command-list {
+  max-height: 380px;
+  overflow-y: auto;
+  padding: 8px;
+}
+
+.command-list-item {
+  padding: 12px 16px;
+  border-radius: 11px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.command-list-item:hover, .command-list-item.active {
+  background: rgba(0,255,209,.12);
+  color: var(--color-accent);
+}
+
+.command-list-item i {
+  width: 20px;
+  color: var(--text-muted);
+}
+
+.command-list-item kbd {
+  margin-left: auto;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: rgba(255,255,255,.08);
+  border: 1px solid var(--border-medium);
+  color: var(--text-muted);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   LOADER & TOAST
+   ═══════════════════════════════════════════════════════════════ */
+.loading-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(3,4,8,.8);
+  backdrop-filter: blur(8px);
+  display: none;
+  place-items: center;
+  z-index: 900;
+}
+
+.loading-overlay.show {
+  display: grid;
+  animation: fadeInOverlay 0.2s;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 4px solid rgba(255,255,255,.08);
+  border-top-color: var(--color-accent);
+  animation: spinAnimation 0.8s linear infinite;
+}
+
+@keyframes spinAnimation {
+  to { transform: rotate(360deg); }
+}
+
+.toast-notification-container {
+  position: fixed;
+  bottom: 26px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  pointer-events: none;
+}
+
+.toast-message {
+  padding: 14px 24px;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--color-success), #059669);
+  color: #001;
+  box-shadow: 0 15px 40px -10px rgba(34,224,138,.6);
+  animation: toastIn 0.35s var(--transition-fast), toastOut 0.35s 2.3s forwards;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  pointer-events: auto;
+  max-width: 90vw;
+}
+
+.toast-message.error {
+  background: linear-gradient(135deg, var(--color-danger), var(--color-accent-3));
+  color: #fff;
+}
+
+.toast-message.warning {
+  background: linear-gradient(135deg, var(--color-warn), #ff8c00);
+  color: #001;
+}
+
+@keyframes toastIn {
+  from { opacity: 0; transform: translateY(25px) scale(0.9); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes toastOut {
+  to { opacity: 0; transform: translateY(25px) scale(0.9); }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE DESIGN
+   ═══════════════════════════════════════════════════════════════ */
+@media (max-width: 900px) {
+  .app-layout {
+    grid-template-columns: 1fr;
+  }
+  
+  .sidebar-panel {
+    display: none;
+    position: fixed;
+    top: 71px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 80;
+    max-height: none;
+    background: var(--bg-solid);
+    animation: slideInLeft 0.3s var(--transition-fast);
+  }
+  
+  @keyframes slideInLeft {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+  }
+  
+  .sidebar-panel.show {
+    display: block;
+  }
+  
+  .content-area {
+    padding: 18px;
+    max-height: none;
+    overflow-y: visible;
+  }
+  
+  .top-nav {
+    padding: 12px 16px;
+  }
+  
+  .logo-text {
+    font-size: 18px;
+  }
+  
+  .logo-img {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .user-name {
+    display: none;
+  }
+  
+  .user-badge {
+    padding: 4px;
+  }
+  
+  .email-card {
+    grid-template-columns: auto 1fr;
+    gap: 12px;
+    padding: 15px 16px;
+  }
+  
+  .email-actions-wrap {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .email-input-box {
+    min-width: 100%;
+  }
+  
+  .action-buttons {
+    width: 100%;
+  }
+  
+  .action-buttons .btn-pill {
+    flex: 1;
+    justify-content: center;
+    padding: 13px 14px;
+    font-size: 12.5px;
+  }
+  
+  .address-panel {
+    padding: 20px;
+  }
+  
+  .message-view-panel {
+    padding: 18px;
+  }
+  
+  .inbox-toolbar {
+    gap: 10px;
+  }
+  
+  .filter-btn {
+    padding: 10px 14px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .auth-card {
+    padding: 32px 22px 26px;
+  }
+  
+  .auth-header .logo-text {
+    font-size: 19px;
+  }
+  
+  .message-subject-text {
+    font-size: 17px;
+  }
+  
+  .message-content-body {
+    padding: 16px;
+    font-size: 14px;
+  }
+}
+</style>
+</head>
+<body>
+
+<canvas id="particles-canvas"></canvas>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     AUTHENTICATION SCREEN
+     ═══════════════════════════════════════════════════════════════ -->
+<div id="authScreen">
+  <div class="auth-card">
+    
+    <!-- Header with Logo -->
+    <div class="auth-header">
+      <div class="logo-container">
+        <img src="https://i.ibb.co/fzjjCtrn/545430.jpg" alt="AHSAN × NOVA" class="logo-img" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><defs><linearGradient id=%22g%22 x1=%220%22 y1=%220%22 x2=%221%22 y2=%221%22><stop offset=%220%22 stop-color=%22%2300ffd1%22/><stop offset=%221%22 stop-color=%22%237c5cff%22/></linearGradient></defs><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%230a0d16%22/><path d=%22M50 10L85 30v40L50 90 15 70V30z%22 fill=%22none%22 stroke=%22url(%23g)%22 stroke-width=%224%22/><text x=%2250%22 y=%2265%22 text-anchor=%22middle%22 font-family=%22sans-serif%22 font-size=%2230%22 font-weight=%22900%22 fill=%22url(%23g)%22>A×N</text></svg>'"/>
+        
+        <span class="logo-text">
+          <span class="brand-axn">AHSAN</span>
+          <span class="brand-x">×</span>
+          <span class="brand-nova">NOVA</span>
+        </span>
+      </div>
+      <div class="auth-tagline">TEMPMAIL · VAULT · CLOUD SYNC</div>
+    </div>
+
+    <div class="auth-message" id="authMsg"></div>
+
+    <!-- Tabs -->
+    <div class="auth-tabs" id="authTabs">
+      <button type="button" class="auth-tab-btn active" data-tab="signin">Sign In</button>
+      <button type="button" class="auth-tab-btn" data-tab="signup">Sign Up</button>
+    </div>
+
+    <!-- SIGN IN FORM -->
+    <form id="formSignIn" autocomplete="on">
+      <div class="form-group">
+        <label class="form-label">Email Address</label>
+        <div class="input-wrapper">
+          <input type="email" class="form-input" id="siEmail" required placeholder="you@example.com" autocomplete="email"/>
+          <i class="fas fa-envelope input-icon"></i>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Password</label>
+        <div class="input-wrapper">
+          <input type="password" class="form-input" id="siPass" required placeholder="••••••••" autocomplete="current-password"/>
+          <i class="fas fa-lock input-icon"></i>
+        </div>
+      </div>
+      <button class="btn-submit" type="submit">Sign In <i class="fas fa-arrow-right"></i></button>
+      <div class="auth-link-row"><a id="forgotLink">Forgot password?</a></div>
+    </form>
+
+    <!-- SIGN UP FORM -->
+    <form id="formSignUp" class="hidden" autocomplete="on">
+      <div class="form-group">
+        <label class="form-label">Display Name</label>
+        <div class="input-wrapper">
+          <input type="text" class="form-input" id="suName" required placeholder="Your name" autocomplete="name"/>
+          <i class="fas fa-user input-icon"></i>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email Address</label>
+        <div class="input-wrapper">
+          <input type="email" class="form-input" id="suEmail" required placeholder="you@example.com" autocomplete="email"/>
+          <i class="fas fa-envelope input-icon"></i>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Password (min 6 chars)</label>
+        <div class="input-wrapper">
+          <input type="password" class="form-input" id="suPass" required placeholder="••••••••" minlength="6" autocomplete="new-password"/>
+          <i class="fas fa-lock input-icon"></i>
+        </div>
+      </div>
+      <button class="btn-submit" type="submit">Create Account <i class="fas fa-user-plus"></i></button>
+    </form>
+
+    <!-- FORGOT PASSWORD FORM -->
+    <form id="formForgot" class="hidden">
+      <p style="font-size:14px; color:var(--text-muted); margin-bottom:18px; text-align:center; position:relative; z-index:1">
+        Enter your email and we'll send a reset link.
+      </p>
+      <div class="form-group">
+        <label class="form-label">Email Address</label>
+        <div class="input-wrapper">
+          <input type="email" class="form-input" id="fpEmail" required placeholder="you@example.com"/>
+          <i class="fas fa-envelope input-icon"></i>
+        </div>
+      </div>
+      <button class="btn-submit" type="submit">Send Reset Link</button>
+      <div class="auth-link-row"><a id="backToSignIn">← Back to Sign In</a></div>
+    </form>
+
+    <div class="auth-footer">
+      <span>Crafting quality tools since 2015</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     MAIN APPLICATION
+     ═══════════════════════════════════════════════════════════════ -->
+<div id="appShell">
+  
+  <!-- Top Navigation -->
+  <nav class="top-nav">
+    <div class="nav-left">
+      <button class="icon-button" id="menuBtn" style="display:none"><i class="fas fa-bars"></i></button>
+      <div class="logo-container small">
+        <img src="https://i.ibb.co/fzjjCtrn/545430.jpg" alt="AHSAN × NOVA" class="logo-img" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><defs><linearGradient id=%22g%22 x1=%220%22 y1=%220%22 x2=%221%22 y2=%221%22><stop offset=%220%22 stop-color=%22%2300ffd1%22/><stop offset=%221%22 stop-color=%22%237c5cff%22/></linearGradient></defs><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%230a0d16%22/><path d=%22M50 10L85 30v40L50 90 15 70V30z%22 fill=%22none%22 stroke=%22url(%23g)%22 stroke-width=%224%22/><text x=%2250%22 y=%2265%22 text-anchor=%22middle%22 font-family=%22sans-serif%22 font-size=%2230%22 font-weight=%22900%22 fill=%22url(%23g)%22>A×N</text></svg>'"/>
+        <span class="logo-text">
+          <span class="brand-axn">AHSAN</span>
+          <span class="brand-x">×</span>
+          <span class="brand-nova">NOVA</span>
+        </span>
+      </div>
+    </div>
+    <div class="nav-right">
+      <button class="icon-button" id="cmdBtn" title="Command palette (Ctrl+K)"><i class="fas fa-terminal"></i></button>
+      <div class="user-badge" id="userChip">
+        <div class="user-avatar" id="userAvatar">A</div>
+        <span class="user-name" id="userName">User</span>
+      </div>
+      <button class="icon-button" id="logoutBtn" title="Sign out"><i class="fas fa-power-off"></i></button>
+    </div>
+  </nav>
+
+  <!-- Main Layout -->
+  <div class="app-layout">
+    
+    <!-- Sidebar -->
+    <aside class="sidebar-panel" id="sidebar">
+      <div class="sidebar-heading">Accounts</div>
+      <button class="sidebar-action" id="newEmailBtn"><i class="fas fa-plus-circle"></i> Generate New</button>
+      <div class="address-list" id="addressList"></div>
+
+      <div class="sidebar-heading" style="margin-top:16px">Filters</div>
+      <button class="sidebar-action active" data-filter="all"><i class="fas fa-inbox"></i> All Mail <span class="sidebar-badge" id="badgeAll">0</span></button>
+      <button class="sidebar-action" data-filter="unread"><i class="fas fa-envelope"></i> Unread <span class="sidebar-badge" id="badgeUnread">0</span></button>
+      <button class="sidebar-action" data-filter="starred"><i class="fas fa-star"></i> Starred <span class="sidebar-badge" id="badgeStar">0</span></button>
+
+      <div class="sidebar-heading" style="margin-top:16px">Tools</div>
+      <button class="sidebar-action" id="autoRefreshBtn"><i class="fas fa-sync-alt"></i> Auto-Refresh <span class="sidebar-badge" id="autoBadge">ON</span></button>
+      <button class="sidebar-action" id="exportBtn"><i class="fas fa-download"></i> Export Backup</button>
+      <button class="sidebar-action" id="importBtn"><i class="fas fa-upload"></i> Import Backup</button>
+      <input type="file" id="importFile" accept="application/json" style="display:none"/>
+
+      <div class="sidebar-heading" style="margin-top:16px">Status</div>
+      <div style="padding:6px 12px; font-size:12px; color:var(--text-muted); font-family:'JetBrains Mono',monospace">
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px">
+          <span class="address-dot" style="width:8px; height:8px;"></span>
+          <span id="connStatus">Connected</span>
+        </div>
+        <div style="opacity:0.6" id="lastSync">Never synced</div>
+      </div>
+    </aside>
+
+    <!-- Content Area -->
+    <main class="content-area" id="mainContent">
+      
+      <!-- Address Panel -->
+      <div class="address-panel" id="addrPanel">
+        <div class="address-label"><i class="fas fa-at"></i> Active Temporary Address</div>
+        <div class="address-controls">
+          <input class="email-input-box" id="addr" readonly value="Generating..."/>
+          <div class="action-buttons">
+            <button class="btn-pill outline" id="copyAddrBtn" title="Copy"><i class="fas fa-copy"></i> Copy</button>
+            <button class="btn-pill outline" id="refreshBtn" title="Refresh"><i class="fas fa-rotate"></i> Refresh</button>
+            <button class="btn-pill" id="customBtn" title="Custom address"><i class="fas fa-pen"></i> Custom</button>
+          </div>
+        </div>
+        <div class="custom-email-box" id="customBox">
+          <input type="text" id="customName" placeholder="your-name (a-z, 0-9, . _ -)" maxlength="24"/>
+          <button class="btn-pill" id="customGoBtn"><i class="fas fa-check"></i> Create</button>
+          <button class="btn-pill outline" id="customCancelBtn">Cancel</button>
+        </div>
+      </div>
+
+      <!-- Inbox Panel -->
+      <div id="inboxPanel">
+        <div class="inbox-toolbar">
+          <div class="search-container">
+            <i class="fas fa-search"></i>
+            <input id="searchInput" placeholder="Search sender, subject, preview..."/>
+          </div>
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="unread">Unread</button>
+          <button class="filter-btn" data-filter="starred">Starred</button>
+        </div>
+        <div class="email-list-container" id="mailList"></div>
+        <div class="empty-inbox" id="emptyState">
+          <i class="fas fa-inbox"></i>
+          <h3>Inbox is empty</h3>
+          <p>Messages will appear here automatically. Share your address!</p>
+        </div>
+      </div>
+
+      <!-- Message View Panel -->
+      <div class="message-view-panel hidden" id="msgPanel">
+        <div class="message-header-bar">
+          <button class="btn-back" id="msgBack"><i class="fas fa-arrow-left"></i> Back to Inbox</button>
+          <div style="display:flex; gap:8px">
+            <button class="icon-button" id="msgStar" title="Star"><i class="fas fa-star"></i></button>
+            <button class="icon-button" id="msgDownload" title="Download .html"><i class="fas fa-download"></i></button>
+            <button class="icon-button" id="msgDelete" title="Delete"><i class="fas fa-trash"></i></button>
+          </div>
+        </div>
+        <div class="message-info-box">
+          <h2 class="message-subject-text" id="msgSubject">Subject</h2>
+          <div class="message-detail-row"><strong>From:</strong> <span id="msgFrom"></span></div>
+          <div class="message-detail-row"><strong>To:</strong> <span id="msgTo"></span></div>
+          <div class="message-detail-row"><strong>Date:</strong> <span id="msgDate"></span></div>
+        </div>
+        <div class="message-content-body" id="msgBody"></div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<!-- Command Palette Overlay -->
+<div class="command-palette-overlay" id="cmdOverlay">
+  <div class="command-palette-box">
+    <input class="command-input" id="cmdInput" placeholder="Type a command..." autocomplete="off"/>
+    <div class="command-list" id="cmdList"></div>
+  </div>
+</div>
+
+<!-- Loading Overlay -->
+<div class="loading-overlay" id="loader"><div class="loading-spinner"></div></div>
+
+<!-- Toast Container -->
+<div class="toast-notification-container" id="toastWrap"></div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     FIREBASE & APP LOGIC
+     ═══════════════════════════════════════════════════════════════ -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import {
+  getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword,
+  sendPasswordResetEmail, signOut, onAuthStateChanged, updateProfile,
+  setPersistence, browserLocalPersistence
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import {
+  getFirestore, collection, doc, setDoc, getDoc, getDocs, deleteDoc,
+  addDoc, updateDoc, serverTimestamp, query, orderBy, onSnapshot, writeBatch,
+  enableIndexedDbPersistence
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import {
+  getDatabase, ref as rtdbRef, set as rtdbSet, onValue as rtdbOnValue,
+  onDisconnect as rtdbOnDisconnect, serverTimestamp as rtdbServerTimestamp
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
+/* ═══════════════════════════════════════════════════════════════
+   🔥 FIREBASE CONFIGURATION
+   ═══════════════════════════════════════════════════════════════ */
+const firebaseConfig = {
+  apiKey: "AIzaSyC4GqII_QSqL_z3av56vBTcqIp9SSAWLFY",
+  authDomain: "ahsannova-tempmail.firebaseapp.com",
+  databaseURL: "https://ahsannova-tempmail-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "ahsannova-tempmail",
+  storageBucket: "ahsannova-tempmail.firebasestorage.app",
+  messagingSenderId: "15299560723",
+  appId: "1:15299560723:web:3799c8ee54c28f767f86e6"
+};
+
+const app  = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db   = getFirestore(app);
+const rtdb = getDatabase(app);
+
+enableIndexedDbPersistence(db).catch(() => {});
+
+/* ═══════════════════════════════════════════════════════════════
+   TEMP-MAIL API ENDPOINT
+   ═══════════════════════════════════════════════════════════════ */
+const BASE_URL = "https://api.internal.temp-mail.io/api/v3";
+const API_HEADERS = {
+  "content-type": "application/json",
+  "application-name": "web",
+  "application-version": "4.0.0",
+  "x-cors-header": "iaWg3pchvFx48fY"
+};
+
+/* ═══════════════════════════════════════════════════════════════
+   GLOBAL STATE VARIABLES
+   ═══════════════════════════════════════════════════════════════ */
+let currentUser     = null;
+let addresses       = [];
+let activeAddressId = null;
+let messages        = [];
+let activeMessage   = null;
+let currentFilter   = "all";
+let searchTerm      = "";
+let autoRefresh     = true;
+let refreshTimer    = null;
+let unsubMessages   = null;
+let unsubPresence   = null;
+let lastSyncTime    = null;
+let rateLimitMap    = new Map();
+let sessionTimeout  = null;
+let sessionWarned   = false;
+
+/* ═══════════════════════════════════════════════════════════════
+   UTILITY FUNCTIONS
+   ═══════════════════════════════════════════════════════════════ */
+const $ = (id) => document.getElementById(id);
+const qs = (sel) => document.querySelector(sel);
+const qsa = (sel) => document.querySelectorAll(sel);
+
+const toast = (msg, type = "ok") => {
+  const icons = { ok: "fa-circle-check", err: "fa-circle-exclamation", warn: "fa-triangle-exclamation" };
+  const el = document.createElement("div");
+  el.className = "toast-message" + (type === "err" ? " error" : type === "warn" ? " warning" : "");
+  el.innerHTML = `<i class="fas ${icons[type] || icons.ok}"></i> <span>${msg}</span>`;
+  $("toastWrap").appendChild(el);
+  setTimeout(() => el.remove(), 2700);
+  return el;
+};
+
+const loader = (on) => $("loader").classList.toggle("show", on);
+
+const escapeHtml = (s = "") => String(s).replace(/[&<>"']/g, c => ({
+  "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+}[c]));
+
+const sanitizeHtml = (html = "") => String(html)
+  .replace(/<script[\s\S]*?<\/script>/gi, "")
+  .replace(/<iframe[\s\S]*?<\/iframe>/gi, "")
+  .replace(/ on\w+\s*=\s*("[^"]*"|'[^']*'|[^\s>]+)/gi, "")
+  .replace(/javascript:/gi, "");
+
+const rateLimit = (key, ms = 3000) => {
+  const now = Date.now();
+  const last = rateLimitMap.get(key) || 0;
+  if (now - last < ms) return false;
+  rateLimitMap.set(key, now);
+  return true;
+};
+
+const friendlyErr = (err) => {
+  const m = {
+    "auth/invalid-email": "Invalid email format.",
+    "auth/user-not-found": "No account found with this email.",
+    "auth/wrong-password": "Incorrect password.",
+    "auth/invalid-credential": "Invalid email or password.",
+    "auth/email-already-in-use": "This email is already registered.",
+    "auth/weak-password": "Password too weak (min 6 characters).",
+    "auth/too-many-requests": "Too many attempts. Please try later.",
+    "auth/network-request-failed": "Network error. Check connection.",
+    "auth/operation-not-allowed": "Email sign-in is disabled. Enable it in Firebase Console."
+  };
+  return m[err.code] || err.message || "Something went wrong.";
+};
+
+const formatDate = (d) => {
+  if (!d) return "";
+  const dt = d.seconds ? new Date(d.seconds * 1000) : new Date(d);
+  if (isNaN(dt)) return "";
+  const now = new Date();
+  const diff = (now - dt) / 1000;
+  if (diff < 60) return "just now";
+  if (diff < 3600) return Math.floor(diff / 60) + "m ago";
+  if (diff < 86400) return Math.floor(diff / 3600) + "h ago";
+  if (diff < 604800) return Math.floor(diff / 86400) + "d ago";
+  return dt.toLocaleDateString();
+};
+
+const playBeep = () => {
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = "sine";
+    osc.frequency.setValueAtTime(880, ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(440, ctx.currentTime + 0.1);
+    gain.gain.setValueAtTime(0.08, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.15);
+    osc.connect(gain).connect(ctx.destination);
+    osc.start();
+    osc.stop(ctx.currentTime + 0.15);
+  } catch {}
+};
+
+/* ═══════════════════════════════════════════════════════════════
+   PARTICLE BACKGROUND ENGINE
+   ═══════════════════════════════════════════════════════════════ */
+(function initParticles() {
+  const canvas = $("particles-canvas");
+  if (!canvas) return;
+  const ctx = canvas.getContext("2d");
+  let w, h;
+  const particles = [];
+  const count = Math.min(70, Math.floor(window.innerWidth / 25));
+
+  const resize = () => {
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = window.innerHeight;
+  };
+  resize();
+  window.addEventListener("resize", resize);
+
+  for (let i = 0; i < count; i++) {
+    particles.push({
+      x: Math.random() * w,
+      y: Math.random() * h,
+      vx: (Math.random() - 0.5) * 0.4,
+      vy: (Math.random() - 0.5) * 0.4,
+      r: Math.random() * 1.8 + 0.4,
+      color: Math.random() > 0.5 ? "0,255,209" : "124,92,255"
+    });
+  }
+
+  const draw = () => {
+    ctx.clearRect(0, 0, w, h);
+    particles.forEach(p => {
+      p.x += p.vx;
+      p.y += p.vy;
+      if (p.x < 0 || p.x > w) p.vx *= -1;
+      if (p.y < 0 || p.y > h) p.vy *= -1;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${p.color},0.6)`;
+      ctx.fill();
+    });
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const d2 = dx * dx + dy * dy;
+        if (d2 < 14000) {
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = `rgba(0,255,209,${0.08 * (1 - d2 / 14000)})`;
+          ctx.lineWidth = 0.7;
+          ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(draw);
+  };
+  draw();
+})();
+
+/* ═══════════════════════════════════════════════════════════════
+   AUTHENTICATION LOGIC (FIXED TAB SWITCHING)
+   ═══════════════════════════════════════════════════════════════ */
+const authMsg = (text, type = "ok") => {
+  const el = $("authMsg");
+  el.textContent = text || "";
+  el.className = "auth-message " + (text ? (type === "err" ? "error" : "success") : "");
+};
+
+const showForm = (which) => {
+  // Hide all forms
+  $("formSignIn").classList.add("hidden");
+  $("formSignUp").classList.add("hidden");
+  $("formForgot").classList.add("hidden");
+
+  // Show selected form
+  if (which === "signin") $("formSignIn").classList.remove("hidden");
+  if (which === "signup") $("formSignUp").classList.remove("hidden");
+  if (which === "forgot") $("formForgot").classList.remove("hidden");
+
+  // Update active tab
+  qsa(".auth-tab-btn").forEach(b => {
+    if (b.dataset.tab === which) b.classList.add("active");
+    else b.classList.remove("active");
+  });
+
+  authMsg("");
+};
+
+// Tab Switching Event Listeners (FIXED)
+qsa(".auth-tab-btn").forEach(btn => {
+  btn.addEventListener("click", (e) => {
+    e.preventDefault();
+    const tab = btn.getAttribute("data-tab");
+    showForm(tab);
+  });
+});
+
+$("forgotLink").addEventListener("click", (e) => {
+  e.preventDefault();
+  showForm("forgot");
+});
+
+$("backToSignIn").addEventListener("click", (e) => {
+  e.preventDefault();
+  showForm("signin");
+});
+
+$("formSignIn").onsubmit = async (e) => {
+  e.preventDefault();
+  if (!rateLimit("signin", 1500)) return toast("Slow down", "warn");
+  try {
+    loader(true); authMsg("");
+    await setPersistence(auth, browserLocalPersistence);
+    await signInWithEmailAndPassword(auth, $("siEmail").value.trim(), $("siPass").value);
+  } catch (err) {
+    authMsg(friendlyErr(err), "err");
+  } finally {
+    loader(false);
+  }
+};
+
+$("formSignUp").onsubmit = async (e) => {
+  e.preventDefault();
+  if (!rateLimit("signup", 1500)) return toast("Slow down", "warn");
+  try {
+    loader(true); authMsg("");
+    const cred = await createUserWithEmailAndPassword(
+      auth, $("suEmail").value.trim(), $("suPass").value
+    );
+    await updateProfile(cred.user, {
+      displayName: $("suName").value.trim() || "User"
+    });
+    await setDoc(doc(db, "users", cred.user.uid), {
+      displayName: $("suName").value.trim() || "User",
+      email: cred.user.email,
+      createdAt: serverTimestamp()
+    }, { merge: true });
+    authMsg("Account created successfully!", "ok");
+  } catch (err) {
+    authMsg(friendlyErr(err), "err");
+  } finally {
+    loader(false);
+  }
+};
+
+$("formForgot").onsubmit = async (e) => {
+  e.preventDefault();
+  try {
+    loader(true); authMsg("");
+    await sendPasswordResetEmail(auth, $("fpEmail").value.trim());
+    authMsg("Reset link sent! Check your inbox.", "ok");
+  } catch (err) {
+    authMsg(friendlyErr(err), "err");
+  } finally {
+    loader(false);
+  }
+};
+
+$("logoutBtn").onclick = async () => {
+  if (!confirm("Sign out? Your saved emails stay in the vault.")) return;
+  stopAutoRefresh();
+  if (unsubPresence) unsubPresence();
+  if (currentUser) {
+    try { await rtdbSet(rtdbRef(rtdb, `presence/${currentUser.uid}`), { online: false, lastSeen: rtdbServerTimestamp() }); } catch {}
+  }
+  await signOut(auth);
+};
+
+/* ═══════════════════════════════════════════════════════════════
+   PRESENCE SYSTEM
+   ═══════════════════════════════════════════════════════════════ */
+async function setupPresence(uid) {
+  const userStatusRef = rtdbRef(rtdb, `presence/${uid}`);
+  const isOffline = { state: "offline", lastChanged: rtdbServerTimestamp() };
+  const isOnline = { state: "online", lastChanged: rtdbServerTimestamp() };
+  try {
+    await rtdbOnDisconnect(userStatusRef).set(isOffline);
+    await rtdbSet(userStatusRef, isOnline);
+  } catch (e) {
+    console.warn("Presence setup failed", e);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   AUTH STATE OBSERVER
+   ═══════════════════════════════════════════════════════════════ */
+onAuthStateChanged(auth, async (user) => {
+  if (user) {
+    currentUser = user;
+    $("authScreen").classList.add("hidden");
+    $("appShell").classList.add("active");
+    $("userName").textContent = user.displayName || user.email.split("@")[0];
+    $("userAvatar").textContent = (user.displayName || user.email)[0].toUpperCase();
+    if (window.innerWidth <= 900) $("menuBtn").style.display = "grid";
+
+    await setupPresence(user.uid);
+    await loadAddresses();
+    startAutoRefresh();
+    startSessionTimeout();
+    $("connStatus").textContent = "Connected";
+  } else {
+    currentUser = null;
+    $("authScreen").classList.remove("hidden");
+    $("appShell").classList.remove("active");
+    if (unsubMessages) { unsubMessages(); unsubMessages = null; }
+    stopAutoRefresh();
+    clearSessionTimeout();
+  }
+});
+
+/* ═══════════════════════════════════════════════════════════════
+   ADDRESS MANAGEMENT
+   ═══════════════════════════════════════════════════════════════ */
+async function loadAddresses() {
+  try {
+    const snap = await getDocs(collection(db, "users", currentUser.uid, "addresses"));
+    addresses = snap.docs.map(d => ({ id: d.id, ...d.data() }))
+      .sort((a, b) => (b.createdAt?.seconds || 0) - (a.createdAt?.seconds || 0));
+    renderAddressList();
+    if (addresses.length) {
+      const keep = addresses.find(a => a.id === activeAddressId) || addresses[0];
+      await selectAddress(keep.id);
+    } else {
+      await generateNewAddress();
+    }
+  } catch (e) {
+    console.error(e);
+    toast("Failed to load addresses", "err");
+  }
+}
+
+function renderAddressList() {
+  const wrap = $("addressList");
+  wrap.innerHTML = "";
+  if (!addresses.length) {
+    wrap.innerHTML = `<div style="padding:12px; font-size:12px; color:var(--text-muted); text-align:center; opacity:.6">No addresses yet</div>`;
+    return;
+  }
+  addresses.forEach(a => {
+    const el = document.createElement("div");
+    el.className = "address-row" + (a.id === activeAddressId ? " active" : "");
+    el.innerHTML = `
+      <span class="address-dot"></span>
+      <span class="address-email" title="${escapeHtml(a.email)}">${escapeHtml(a.email)}</span>
+      <button class="address-delete" title="Delete"><i class="fas fa-trash-can"></i></button>
+    `;
+    el.onclick = (e) => {
+      if (e.target.closest(".address-delete")) { e.stopPropagation(); deleteAddress(a.id); return; }
+      selectAddress(a.id);
+    };
+    wrap.appendChild(el);
+  });
+}
+
+async function deleteAddress(id) {
+  if (addresses.length <= 1) return toast("Keep at least one address", "warn");
+  if (!confirm("Delete this address and ALL its messages? This cannot be undone.")) return;
+  loader(true);
+  try {
+    const msgsSnap = await getDocs(collection(db, "users", currentUser.uid, "addresses", id, "messages"));
+    const batch = writeBatch(db);
+    msgsSnap.docs.forEach(d => batch.delete(d.ref));
+    batch.delete(doc(db, "users", currentUser.uid, "addresses", id));
+    await batch.commit();
+    addresses = addresses.filter(a => a.id !== id);
+    if (activeAddressId === id) {
+      activeAddressId = null;
+      await selectAddress(addresses[0].id);
+    }
+    renderAddressList();
+    toast("Address deleted");
+  } catch (e) {
+    console.error(e);
+    toast("Delete failed", "err");
+  } finally {
+    loader(false);
+  }
+}
+
+async function selectAddress(id) {
+  activeAddressId = id;
+  const a = addresses.find(x => x.id === id);
+  if (!a) return;
+  $("addr").value = a.email;
+  renderAddressList();
+  await subscribeMessages();
+  if (window.innerWidth <= 900) $("sidebar").classList.remove("show");
+}
+
+async function generateNewAddress(customName = null) {
+  loader(true);
+  try {
+    let email;
+    const r = await fetch(`${BASE_URL}/email/new`, {
+      method: "POST", headers: API_HEADERS,
+      body: JSON.stringify({
+        min_name_length: customName ? customName.length : 10,
+        max_name_length: customName ? customName.length : 10
+      })
+    });
+    if (!r.ok) throw new Error("API failed");
+    const d = await r.json();
+    email = d.email;
+
+    const newDoc = await addDoc(collection(db, "users", currentUser.uid, "addresses"), {
+      email,
+      domain: email.split("@")[1],
+      custom: !!customName,
+      createdAt: serverTimestamp()
+    });
+    addresses.unshift({
+      id: newDoc.id, email, domain: email.split("@")[1],
+      custom: !!customName, createdAt: { seconds: Date.now() / 1000 }
+    });
+    await selectAddress(newDoc.id);
+    toast("New address generated");
+  } catch (e) {
+    console.error(e);
+    toast("Generation failed. Try again.", "err");
+  } finally {
+    loader(false);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   MESSAGE MANAGEMENT
+   ═══════════════════════════════════════════════════════════════ */
+async function subscribeMessages() {
+  if (unsubMessages) { unsubMessages(); unsubMessages = null; }
+  if (!activeAddressId) return;
+  const q = query(
+    collection(db, "users", currentUser.uid, "addresses", activeAddressId, "messages"),
+    orderBy("created_at", "desc")
+  );
+  unsubMessages = onSnapshot(q, (snap) => {
+    const oldCount = messages.length;
+    messages = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+    if (messages.length > oldCount && oldCount > 0) playBeep();
+    renderMailList();
+  }, (err) => console.error("Snapshot error", err));
+}
+
+async function syncFromTempMail() {
+  if (!activeAddressId) return;
+  const a = addresses.find(x => x.id === activeAddressId);
+  if (!a) return;
+  try {
+    const r = await fetch(`${BASE_URL}/email/${a.email}/messages`, { headers: API_HEADERS });
+    if (!r.ok) return;
+    const list = await r.json();
+    if (!Array.isArray(list)) return;
+
+    const existingSnap = await getDocs(
+      collection(db, "users", currentUser.uid, "addresses", activeAddressId, "messages")
+    );
+    const existingIds = new Set(existingSnap.docs.map(d => d.data().tm_id).filter(Boolean));
+
+    for (const m of list) {
+      const tmId = m.id || `${m.from}_${m.created_at}_${m.subject}`;
+      if (existingIds.has(tmId)) continue;
+      await addDoc(
+        collection(db, "users", currentUser.uid, "addresses", activeAddressId, "messages"),
+        {
+          tm_id: tmId,
+          from: m.from || "unknown",
+          to: a.email,
+          subject: m.subject || "(No subject)",
+          body_text: m.body_text || "",
+          body_html: m.body_html || "",
+          created_at: m.created_at || new Date().toISOString(),
+          starred: false,
+          read: false,
+          savedAt: serverTimestamp()
+        }
+      );
+    }
+    lastSyncTime = new Date();
+    $("lastSync").textContent = "Last: " + lastSyncTime.toLocaleTimeString();
+  } catch (e) {
+    /* silent */
+  }
+}
+
+async function refreshActiveMail() {
+  const btn = $("refreshBtn");
+  const icon = btn.querySelector("i");
+  icon.style.animation = "spinAnimation 0.8s linear infinite";
+  await syncFromTempMail();
+  setTimeout(() => icon.style.animation = "", 700);
+  toast("Inbox refreshed");
+}
+
+function startAutoRefresh() {
+  stopAutoRefresh();
+  if (!autoRefresh) return;
+  refreshTimer = setInterval(() => {
+    if (activeAddressId) syncFromTempMail();
+  }, 20000);
+}
+function stopAutoRefresh() {
+  if (refreshTimer) clearInterval(refreshTimer);
+  refreshTimer = null;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   RENDERING - EMAIL LIST
+   ═══════════════════════════════════════════════════════════════ */
+function renderMailList() {
+  const listEl = $("mailList");
+  const empty = $("emptyState");
+  listEl.innerHTML = "";
+
+  let filtered = messages;
+  if (currentFilter === "unread") filtered = filtered.filter(m => !m.read);
+  if (currentFilter === "starred") filtered = filtered.filter(m => m.starred);
+  if (searchTerm) {
+    const s = searchTerm.toLowerCase();
+    filtered = filtered.filter(m =>
+      (m.from || "").toLowerCase().includes(s) ||
+      (m.subject || "").toLowerCase().includes(s) ||
+      (m.body_text || "").toLowerCase().includes(s)
+    );
+  }
+
+  $("badgeAll").textContent = messages.length;
+  $("badgeUnread").textContent = messages.filter(m => !m.read).length;
+  $("badgeStar").textContent = messages.filter(m => m.starred).length;
+
+  if (!filtered.length) {
+    empty.style.display = "block";
+    return;
+  }
+  empty.style.display = "none";
+
+  filtered.forEach(m => {
+    const fromName = (m.from || "").split("@")[0].replace(/[<>\s]/g, "") || "?";
+    const initial = fromName[0]?.toUpperCase() || "M";
+    const preview = (m.body_text || (m.body_html || "").replace(/<[^>]+>/g, "") || "").slice(0, 120);
+    const dateStr = formatDate(m.created_at);
+
+    const el = document.createElement("div");
+    el.className = "email-card" + (m.read ? "" : " unread");
+    el.innerHTML = `
+      <div class="email-avatar">${initial}</div>
+      <div class="email-meta">
+        <div class="email-sender">
+          ${!m.read ? '<span class="unread-dot"></span>' : ""}
+          ${escapeHtml(m.from || "Unknown")}
+          ${m.starred ? '<i class="fas fa-star star-icon"></i>' : ""}
+        </div>
+        <div class="email-subject">${escapeHtml(m.subject || "(No subject)")}</div>
+        <div class="email-preview">${escapeHtml(preview)}</div>
+      </div>
+      <div class="email-actions-wrap">
+        <div class="email-time">${dateStr}</div>
+        <div class="email-quick-actions">
+          <button title="Star" data-act="star"><i class="fas fa-star" style="color:${m.starred ? 'var(--color-warn)' : 'currentColor'}"></i></button>
+          <button title="Delete" class="delete-btn" data-act="del"><i class="fas fa-trash-can"></i></button>
+        </div>
+      </div>
+    `;
+    el.querySelector('[data-act="star"]').onclick = (e) => { e.stopPropagation(); toggleStar(m); };
+    el.querySelector('[data-act="del"]').onclick = (e) => { e.stopPropagation(); deleteMessage(m.id); };
+    el.onclick = () => openMessage(m);
+    listEl.appendChild(el);
+  });
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   RENDERING - MESSAGE VIEW
+   ═══════════════════════════════════════════════════════════════ */
+async function openMessage(m) {
+  activeMessage = m;
+  if (!m.read) {
+    try {
+      await updateDoc(
+        doc(db, "users", currentUser.uid, "addresses", activeAddressId, "messages", m.id),
+        { read: true }
+      );
+    } catch {}
+  }
+  $("inboxPanel").classList.add("hidden");
+  $("addrPanel").classList.add("hidden");
+  $("msgPanel").classList.remove("hidden");
+
+  $("msgSubject").textContent = m.subject || "(No subject)";
+  $("msgFrom").textContent = m.from || "Unknown";
+  $("msgTo").textContent = m.to || "";
+  $("msgDate").textContent = m.created_at ? new Date(m.created_at).toLocaleString() : "";
+  $("msgStar").innerHTML = `<i class="fas fa-star" style="color:${m.starred ? 'var(--color-warn)' : 'currentColor'}"></i>`;
+
+  const body = $("msgBody");
+  if (m.body_html) {
+    body.innerHTML = sanitizeHtml(m.body_html);
+  } else {
+    body.textContent = m.body_text || "(No content)";
+  }
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+async function toggleStar(m) {
+  try {
+    await updateDoc(
+      doc(db, "users", currentUser.uid, "addresses", activeAddressId, "messages", m.id),
+      { starred: !m.starred }
+    );
+    if (activeMessage && activeMessage.id === m.id) {
+      $("msgStar").innerHTML = `<i class="fas fa-star" style="color:${!m.starred ? 'var(--color-warn)' : 'currentColor'}"></i>`;
+    }
+    toast(!m.starred ? "Starred" : "Unstarred");
+  } catch {
+    toast("Failed", "err");
+  }
+}
+
+async function deleteMessage(id) {
+  if (!confirm("Delete this message?")) return;
+  try {
+    await deleteDoc(
+      doc(db, "users", currentUser.uid, "addresses", activeAddressId, "messages", id)
+    );
+    toast("Message deleted");
+    if (activeMessage?.id === id) backToInbox();
+  } catch {
+    toast("Delete failed", "err");
+  }
+}
+
+function backToInbox() {
+  $("msgPanel").classList.add("hidden");
+  $("inboxPanel").classList.remove("hidden");
+  $("addrPanel").classList.remove("hidden");
+  activeMessage = null;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   EXPORT / IMPORT LOGIC
+   ═══════════════════════════════════════════════════════════════ */
+$("exportBtn").onclick = () => {
+  const data = {
+    version: 2,
+    exported: new Date().toISOString(),
+    user: currentUser.email,
+    addresses: addresses.map(a => ({ ...a })),
+    messages: messages.map(m => ({ ...m }))
+  };
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = `ahsannova-backup-${Date.now()}.json`;
+  a.click();
+  URL.revokeObjectURL(a.href);
+  toast("Backup downloaded");
+};
+
+$("importBtn").onclick = () => $("importFile").click();
+$("importFile").onchange = async (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+  try {
+    const text = await file.text();
+    const data = JSON.parse(text);
+    if (!data.version || !data.messages) throw new Error("Invalid backup");
+    if (!confirm(`Import ${data.messages?.length || 0} messages to current address?`)) return;
+    loader(true);
+    for (const m of data.messages) {
+      await addDoc(
+        collection(db, "users", currentUser.uid, "addresses", activeAddressId, "messages"),
+        { ...m, id: undefined, savedAt: serverTimestamp() }
+      );
+    }
+    toast("Backup imported");
+  } catch (err) {
+    toast("Import failed: " + err.message, "err");
+  } finally {
+    loader(false);
+    e.target.value = "";
+  }
+};
+
+/* ═══════════════════════════════════════════════════════════════
+   COMMAND PALETTE SYSTEM
+   ═══════════════════════════════════════════════════════════════ */
+const COMMANDS = [
+  { name: "Generate New Address", icon: "fa-plus-circle", key: "N", action: () => generateNewAddress() },
+  { name: "Custom Address", icon: "fa-pen", key: "", action: () => { $("customBox").classList.add("show"); $("customName").focus(); } },
+  { name: "Refresh Inbox", icon: "fa-rotate", key: "R", action: refreshActiveMail },
+  { name: "Copy Address", icon: "fa-copy", key: "C", action: () => $("copyAddrBtn").click() },
+  { name: "Toggle Auto-Refresh", icon: "fa-sync-alt", key: "", action: () => $("autoRefreshBtn").click() },
+  { name: "Export Backup", icon: "fa-download", key: "", action: () => $("exportBtn").click() },
+  { name: "Import Backup", icon: "fa-upload", key: "", action: () => $("importBtn").click() },
+  { name: "Back to Inbox", icon: "fa-arrow-left", key: "Esc", action: backToInbox },
+  { name: "Sign Out", icon: "fa-power-off", key: "", action: () => $("logoutBtn").click() }
+];
+
+let cmdIdx = 0;
+let cmdFiltered = [...COMMANDS];
+
+function renderCmd() {
+  const list = $("cmdList");
+  list.innerHTML = "";
+  if (!cmdFiltered.length) {
+    list.innerHTML = `<div style="padding:16px; text-align:center; color:var(--text-muted); font-size:14px">No commands found</div>`;
+    return;
+  }
+  cmdFiltered.forEach((c, i) => {
+    const el = document.createElement("div");
+    el.className = "command-list-item" + (i === cmdIdx ? " active" : "");
+    el.innerHTML = `<i class="fas ${c.icon}"></i><span>${c.name}</span>${c.key ? `<kbd>${c.key}</kbd>` : ""}`;
+    el.onclick = () => { closeCmd(); c.action(); };
+    list.appendChild(el);
+  });
+}
+
+function openCmd() {
+  $("cmdOverlay").classList.add("show");
+  $("cmdInput").value = "";
+  cmdFiltered = [...COMMANDS];
+  cmdIdx = 0;
+  renderCmd();
+  setTimeout(() => $("cmdInput").focus(), 50);
+}
+function closeCmd() { $("cmdOverlay").classList.remove("show"); }
+
+$("cmdBtn").onclick = openCmd;
+$("cmdOverlay").onclick = (e) => { if (e.target === $("cmdOverlay")) closeCmd(); };
+$("cmdInput").oninput = (e) => {
+  const q = e.target.value.toLowerCase();
+  cmdFiltered = COMMANDS.filter(c => c.name.toLowerCase().includes(q));
+  cmdIdx = 0;
+  renderCmd();
+};
+$("cmdInput").onkeydown = (e) => {
+  if (e.key === "ArrowDown") { cmdIdx = Math.min(cmdIdx + 1, cmdFiltered.length - 1); renderCmd(); e.preventDefault(); }
+  else if (e.key === "ArrowUp") { cmdIdx = Math.max(cmdIdx - 1, 0); renderCmd(); e.preventDefault(); }
+  else if (e.key === "Enter") { if (cmdFiltered[cmdIdx]) { const c = cmdFiltered[cmdIdx]; closeCmd(); c.action(); } }
+  else if (e.key === "Escape") closeCmd();
+};
+
+/* ═══════════════════════════════════════════════════════════════
+   SESSION TIMEOUT WARNING
+   ═══════════════════════════════════════════════════════════════ */
+function resetSessionTimeout() {
+  clearSessionTimeout();
+  if (!currentUser) return;
+  sessionWarned = false;
+  sessionTimeout = setTimeout(() => {
+    if (!sessionWarned) {
+      sessionWarned = true;
+      toast("Session inactive 30 min. Still there?", "warn");
+    }
+  }, 30 * 60 * 1000);
+}
+function clearSessionTimeout() {
+  if (sessionTimeout) clearTimeout(sessionTimeout);
+  sessionTimeout = null;
+}
+function startSessionTimeout() {
+  ["mousemove", "keydown", "click", "scroll", "touchstart"].forEach(ev =>
+    document.addEventListener(ev, resetSessionTimeout, { passive: true }));
+  resetSessionTimeout();
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   EVENT WIRING
+   ═══════════════════════════════════════════════════════════════ */
+$("copyAddrBtn").onclick = async () => {
+  const v = $("addr").value;
+  if (!v || v === "Generating...") return;
+  try {
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(v);
+    } else {
+      const t = document.createElement("textarea");
+      t.value = v;
+      t.style.position = "fixed";
+      t.style.opacity = "0";
+      document.body.appendChild(t);
+      t.select();
+      document.execCommand("copy");
+      t.remove();
+    }
+    toast("Copied to clipboard");
+  } catch {
+    toast("Copy failed", "err");
+  }
+};
+
+$("refreshBtn").onclick = refreshActiveMail;
+$("newEmailBtn").onclick = () => generateNewAddress();
+$("customBtn").onclick = () => {
+  $("customBox").classList.toggle("show");
+  if ($("customBox").classList.contains("show")) $("customName").focus();
+};
+$("customCancelBtn").onclick = () => $("customBox").classList.remove("show");
+$("customGoBtn").onclick = async () => {
+  const n = $("customName").value.trim().toLowerCase().replace(/[^a-z0-9._-]/g, "");
+  if (n.length < 3) return toast("Min 3 characters (a-z 0-9 . _ -)", "warn");
+  $("customBox").classList.remove("show");
+  await generateNewAddress(n);
+  $("customName").value = "";
+};
+
+$("msgBack").onclick = backToInbox;
+$("msgStar").onclick = () => activeMessage && toggleStar(activeMessage);
+$("msgDelete").onclick = () => activeMessage && deleteMessage(activeMessage.id);
+$("msgDownload").onclick = () => {
+  if (!activeMessage) return;
+  const blob = new Blob(
+    [activeMessage.body_html || `<pre>${escapeHtml(activeMessage.body_text || "")}</pre>`],
+    { type: "text/html" }
+  );
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = `mail-${activeMessage.id}.html`;
+  a.click();
+  URL.revokeObjectURL(a.href);
+  toast("Downloaded");
+};
+
+$("searchInput").oninput = (e) => { searchTerm = e.target.value; renderMailList(); };
+
+qsa(".filter-btn").forEach(chip =>
+  chip.onclick = () => {
+    qsa(".filter-btn").forEach(c => c.classList.remove("active"));
+    chip.classList.add("active");
+    currentFilter = chip.dataset.filter;
+    renderMailList();
+  }
+);
+
+qsa(".sidebar-action[data-filter]").forEach(btn =>
+  btn.onclick = () => {
+    qsa(".sidebar-action[data-filter]").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    currentFilter = btn.dataset.filter;
+    qsa(".filter-btn").forEach(c =>
+      c.classList.toggle("active", c.dataset.filter === currentFilter));
+    renderMailList();
+    if (window.innerWidth <= 900) $("sidebar").classList.remove("show");
+  }
+);
+
+$("autoRefreshBtn").onclick = () => {
+  autoRefresh = !autoRefresh;
+  $("autoBadge").textContent = autoRefresh ? "ON" : "OFF";
+  $("autoRefreshBtn").classList.toggle("active", autoRefresh);
+  if (autoRefresh) { startAutoRefresh(); toast("Auto-refresh ON"); }
+  else { stopAutoRefresh(); toast("Auto-refresh OFF"); }
+};
+
+$("menuBtn").onclick = () => $("sidebar").classList.toggle("show");
+
+/* Keyboard shortcuts */
+document.addEventListener("keydown", (e) => {
+  if ((e.ctrlKey || e.metaKey) && e.key === "k") { e.preventDefault(); openCmd(); return; }
+  if (e.key === "Escape") {
+    if ($("cmdOverlay").classList.contains("show")) return closeCmd();
+    if (!$("msgPanel").classList.contains("hidden")) return backToInbox();
+    if ($("sidebar").classList.contains("show")) return $("sidebar").classList.remove("show");
+  }
+  if (["INPUT", "TEXTAREA"].includes(document.activeElement.tagName)) return;
+  if (e.key === "n" || e.key === "N") generateNewAddress();
+  if (e.key === "r" || e.key === "R") refreshActiveMail();
+  if (e.key === "c" || e.key === "C") $("copyAddrBtn").click();
+});
+
+/* Multi-tab sync */
+window.addEventListener("storage", (e) => {
+  if (e.key === "ahsannova-logout") window.location.reload();
+});
+
+/* Connection status */
+window.addEventListener("online", () => {
+  $("connStatus").textContent = "Connected";
+  toast("Back online");
+});
+window.addEventListener("offline", () => {
+  $("connStatus").textContent = "Offline";
+  toast("Offline mode — cached data shown", "warn");
+});
+</script>
+</body>
+</html>
